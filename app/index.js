@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import { useRouter } from 'expo-router';
 
@@ -7,6 +7,15 @@ const Index = () => {
 
   return (
     <View style={styles.container}>
+        <View style={styles.header}>
+        <Image 
+                style={styles.tinyLogo}
+                source={require('../assets/triangle.png')}
+                />
+            <Text style={styles.tinyText}>
+                Welcome
+            </Text>
+        </View>
       <View style={styles.text}>
          <Text style={styles.texts}>Welcome to Anon</Text>
          <Text style={styles.texts}>Connect with other anonymously and share
@@ -15,22 +24,6 @@ const Index = () => {
          </Text>
       </View>
 
-      {/* <View style={styles.btn}>
-      <Button
-          title="Log In"
-          onPress={() => {
-            // Navigate to the login page
-            router.push('/login')  
-        }}
-        />
-        <Button
-          title="Sign Up"
-          onPress={() => {
-            // Navigate to the signup page
-           router.push('/signup')  
-        }}
-        /> 
-    </View>*/}
 
      <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={() => {
@@ -46,6 +39,7 @@ const Index = () => {
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
+        <Text style={styles.footers}>{'\u00A9'} 2023; Anon</Text>
     </View>
   )
 }
@@ -82,6 +76,24 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
       },
+      tinyLogo: {
+        width:30,
+        height:30,
+      },
+      tinyText: {
+         fontSize:20,
+      },
+      header:{
+        display:"flex",
+        flexDirection:"row",
+        marginLeft:140,
+        marginTop:80,
+        marginBottom:-50,
+      },
+      footers: {
+        marginTop:20,
+        textAlign:"center"
+      }
 })
 
 export default Index;

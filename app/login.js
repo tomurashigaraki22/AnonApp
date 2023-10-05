@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Image ,TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Login = () => {
@@ -9,12 +9,20 @@ const Login = () => {
   
     const handleSubmit = () => {
       // Handle your form submission logic here, e.g., validation or API calls
-      Alert.alert('Submitted', `Email: ${email}\nPassword: ${password}`);
+      Alert.alert('Submitted', `Email: ${username}\nPassword: ${password}`);
     };
   return (
     <View style={styles.container}>
+           <View style={styles.header}>
+              <Image 
+                style={styles.tinyLogo}
+                source={require('../assets/triangle.png')}
+                />
+              <Text style={styles.tinyText}>
+                Log In
+            </Text>
+        </View>
      <View style={styles.textContainer}>
-    <Text style={styles.upper}>Anon Log In</Text>
      <Text style={styles.texts}>Join an Exciting Social Experience.</Text>
      </View>
     <View style={styles.inputContainer}>
@@ -42,6 +50,12 @@ const Login = () => {
      <TouchableOpacity style={styles.login} onPress={()=> { router.push("/home")}}> 
      <Text style={styles.buttonText}>Log In</Text>
      </TouchableOpacity>
+
+     <TouchableOpacity onPress={() => { router.push('/signup')}}>
+          <Text style={styles.t1}>New User? Signup Here</Text>
+        </TouchableOpacity>
+
+     <Text style={styles.footer}>{'\u00A9'} 2023; Anon</Text>
     </View>
   )
 }
@@ -103,7 +117,30 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "bold",
         textAlign: "center",
-    }
+    },
+    tinyLogo: {
+        width:30,
+        height:30,
+      },
+      tinyText: {
+         fontSize:20,
+      },
+      header:{
+        display:"flex",
+        flexDirection:"row",
+        marginLeft:140,
+        marginTop:20,
+      },
+      footer: {
+        marginTop:80,
+        textAlign:"center"
+      },
+      t1: {
+        color: "gray", // Change text color to white
+        fontSize: 15,
+        marginTop: 20,
+        textAlign:"center",
+      },
     
   });   
 
